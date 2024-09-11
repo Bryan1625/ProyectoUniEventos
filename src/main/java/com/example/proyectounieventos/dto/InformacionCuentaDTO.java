@@ -1,4 +1,10 @@
 package com.example.proyectounieventos.dto;
 
-public class InformacionCuentaDTO {
-}
+public record InformacionCuentaDTO(
+        String id,
+        String cedula,
+        String nombreCompleto,
+        String direccionResidencia,
+        String numeroTelefono,
+        String correoElectronico
+) {}
