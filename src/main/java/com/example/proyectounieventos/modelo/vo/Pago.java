@@ -1,4 +1,4 @@
 package com.example.proyectounieventos.modelo.vo;
 
-public class codigoValidacion {
+public class Pago {
 }

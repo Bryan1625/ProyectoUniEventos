@@ -1,4 +1,4 @@
 package com.example.proyectounieventos.modelo.documentos;
 
-public class evento {
+public class Cliente {
 }
