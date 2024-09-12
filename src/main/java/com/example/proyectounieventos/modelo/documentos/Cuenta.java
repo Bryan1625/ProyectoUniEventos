@@ -5,9 +5,12 @@ import com.example.proyectounieventos.modelo.vo.CodigoValidacion;
 import com.example.proyectounieventos.modelo.vo.EstadoCuenta;
 import com.example.proyectounieventos.modelo.vo.Usuario;
 import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 
+@Document("cuentas")
 @NoArgsConstructor
 @Getter
 @Setter
@@ -15,8 +18,12 @@ import java.time.LocalDateTime;
 
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 
+
+
 public class Cuenta {
 
+    @Id
+    @EqualsAndHashCode.Include
     private String id;
 
     private String email;
