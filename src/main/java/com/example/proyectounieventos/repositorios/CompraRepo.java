@@ -1,4 +1,12 @@
 package com.example.proyectounieventos.repositorios;
 
-public class CompraRepo {
+import com.example.proyectounieventos.modelo.documentos.Cupon;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface CompraRepo extends MongoRepository<Cupon, String> {
+
+    //CRUD
+
 }

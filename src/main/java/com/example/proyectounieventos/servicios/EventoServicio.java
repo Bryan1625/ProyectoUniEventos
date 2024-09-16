@@ -1,6 +1,8 @@
 package com.example.proyectounieventos.servicios;
 
 import com.example.proyectounieventos.dto.EventoDTO;
+import org.springframework.stereotype.Repository;
+
 
 public interface EventoServicio {
 
