@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Document("eventos")
 @NoArgsConstructor
 @Getter
 @Setter
@@ -17,11 +18,19 @@ import java.util.List;
 
 
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+<<<<<<< HEAD
 @Document("eventos")
 public class Evento {
 
     @Id
     private String eventoId;
+=======
+
+public class Evento {
+
+    @Id
+    private String idEvento;
+>>>>>>> 38c2c1b (se edito algunas clases de modelo, repositorios y servicios)
 
     private String nombre;
     private String descripcion;
@@ -41,7 +50,11 @@ public class Evento {
                   TipoEvento tipo, String direccion, String ciudad, List<Localidad> localidades,
                   String imagenPortada, String imagenLocalidades, EstadoEvento estadoEvento) {
 
+<<<<<<< HEAD
         this.eventoId = eventoId;
+=======
+        this.idEvento = idEvento;
+>>>>>>> 38c2c1b (se edito algunas clases de modelo, repositorios y servicios)
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fecha = fecha;
