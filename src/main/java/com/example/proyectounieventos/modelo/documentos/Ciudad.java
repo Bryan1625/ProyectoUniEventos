@@ -10,4 +10,6 @@ import lombok.*;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 
 public class Ciudad {
+
+
 }
