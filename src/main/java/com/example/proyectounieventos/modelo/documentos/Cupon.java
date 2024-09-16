@@ -1,6 +1,6 @@
 package com.example.proyectounieventos.modelo.documentos;
 
-import com.example.proyectounieventos.modelo.vo.Usuario;
+import com.example.proyectounieventos.modelo.enums.TipoCupon;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,22 +8,23 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document("clientes")
+import java.time.LocalDateTime;
+
+@Document("cupones")
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
-
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Cliente {
+public class Cupon {
 
     @Id
-    private String idCliente;
+    private String idCupon;
 
-    private String nombre;
-    private String cedula;
-    private String correo;
-    private String direccion;
-    private Usuario usuario;
-    //cuenta mercadoPago
+    private String codigo;
+    private TipoCupon tipo;
+    private float descuento;
+    private LocalDateTime fechaVencimiento;
+    private boolean estado;
+
 
 }
