@@ -7,16 +7,16 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.List;
 
 @Data
-@Document(collection = "usuario")
+@Document(collection = "usuarios")
 public class Usuario {
     @Id
-    private String id;
+    private String usuarioId;
     private String cedula;
     private String nombreCompleto;
     private String direccion;
     private String telefono;
     private String correoElectronico;
-    private String contraseña;
+    private String contrasenia;
     private TipoUsuario tipoUsuario;
     private boolean activo;
     private boolean cuentaVerificada;

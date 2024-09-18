@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 
-@Document("cuentas")
+
 @NoArgsConstructor
 @Getter
 @Setter
@@ -19,12 +19,12 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 
 
-
+@Document("cuentas")
 public class Cuenta {
 
     @Id
     @EqualsAndHashCode.Include
-    private String id;
+    private String cuentaId;
 
     private String email;
     private String contrasenia;
@@ -32,15 +32,14 @@ public class Cuenta {
     private LocalDateTime fechaRegistro;
     private Usuario usuario;
     private EstadoCuenta estado;
-
     private CodigoValidacion codigoValidacion;
 
     @Builder
-    public Cuenta(String id, String email, String contrasenia, TipoUsuario tipoUsuario,
+    public Cuenta(String cuentaId, String email, String contrasenia, TipoUsuario tipoUsuario,
                   LocalDateTime fechaRegistro, Usuario usuario, EstadoCuenta estado,
                   CodigoValidacion codigoValidacion) {
 
-        this.id = id;
+        this.cuentaId = cuentaId;
         this.email = email;
         this.contrasenia = contrasenia;
         this.tipoUsuario = tipoUsuario;
@@ -49,7 +48,6 @@ public class Cuenta {
         this.estado = estado;
         this.codigoValidacion = codigoValidacion;
     }
-
 
 
 

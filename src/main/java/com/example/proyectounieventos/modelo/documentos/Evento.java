@@ -2,6 +2,7 @@ package com.example.proyectounieventos.modelo.documentos;
 
 import com.example.proyectounieventos.modelo.enums.EstadoEvento;
 import com.example.proyectounieventos.modelo.enums.TipoEvento;
+import com.example.proyectounieventos.modelo.vo.Localidad;
 import lombok.*;
 
 import java.time.LocalDateTime;

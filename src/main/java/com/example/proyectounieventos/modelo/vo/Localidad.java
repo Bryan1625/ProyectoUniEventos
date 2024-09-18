@@ -1,4 +1,4 @@
-package com.example.proyectounieventos.modelo.documentos;
+package com.example.proyectounieventos.modelo.vo;
 
 import lombok.*;
 
