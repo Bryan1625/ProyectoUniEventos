@@ -1,12 +1,10 @@
 package com.example.proyectounieventos.dto;
 
+import com.example.proyectounieventos.modelo.documentos.Cuenta;
 import com.example.proyectounieventos.modelo.enums.TipoUsuario;
-import lombok.Getter;
-import lombok.Setter;
 
 
-
-public record CrearCuentaDTO(
+public record CuentaDTO(
         String cedula,
         String nombreCompleto,
         String direccionResidencia,
@@ -25,7 +23,13 @@ public record CrearCuentaDTO(
 
     public TipoUsuario getTipoUsuario() {
         return getTipoUsuario();
- }
+    }
+
+    public void eliminar (String cedula){
+
+
+
+    }
 }
 
 
