@@ -2,7 +2,7 @@ package com.example.proyectounieventos.controlador;
 
 import com.example.proyectounieventos.dto.*;
 import com.example.proyectounieventos.modelo.documentos.Evento;
-import com.example.proyectounieventos.servicios.EventoServicios;
+import com.example.proyectounieventos.servicios.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

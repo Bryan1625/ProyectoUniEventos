@@ -41,7 +41,7 @@ public class LocalidadController {
         }
     }
 
-    private LocalidadDTO mapearLocalidadALocalidadDTO(Localidad localidad) {
+    public LocalidadDTO mapearLocalidadALocalidadDTO(Localidad localidad) {
         return new LocalidadDTO(localidad.getNombre(), localidad.getPrecio(), localidad.getCapacidadMaxima());
     }
 }
