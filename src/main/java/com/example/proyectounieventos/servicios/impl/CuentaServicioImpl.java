@@ -19,7 +19,7 @@ public class CuentaServicioImpl implements CuentaServicio {
     private UsuarioRepo usuarioRepo;
 
     @Override
-    public String crearCuenta(CrearCuentaDTO cuentaDTO) throws Exception {
+    public String crearCuenta(CuentaDTO cuentaDTO) throws Exception {
 
         if (cuentaRepo.findByEmail(cuentaDTO.getCorreoElectronico()).isPresent()) {
             throw new IllegalArgumentException("El correo ya está en uso.");
@@ -63,12 +63,19 @@ public class CuentaServicioImpl implements CuentaServicio {
     }
 
     @Override
-    public String editarCuenta(EditarCuentaDTO cuentaDTO) throws Exception {
+    public String editarCuenta(CuentaDTO cuentaDTO) throws Exception {
         return "";
     }
 
     @Override
     public String eliminarCuenta(String cuentaID) throws Exception {
+        return "";
+    }
+
+    @Override
+    public String eliminarCuenta(CuentaDTO cuentaDTO) throws Exception {
+
+
         return "";
     }
 

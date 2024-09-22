@@ -24,4 +24,8 @@ public class Localidad {
     }
 
 
+    public int getCapacidadMaxima() {
+
+        return capacidadMax;
+    }
 }
