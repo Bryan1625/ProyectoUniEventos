@@ -25,7 +25,7 @@ import java.util.List;
 public class Compra {
 
     @Id
-    private String id;
+    private String id;  // Cambiado a long para autoincremento
 
     private List<DetalleCompra> detalles;
     private ObjectId idCliente;
