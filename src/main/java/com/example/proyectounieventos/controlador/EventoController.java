@@ -1,19 +1,10 @@
 package com.example.proyectounieventos.controlador;
 
-<<<<<<< HEAD
+import com.example.proyectounieventos.dto.EventoDTO;
+import com.example.proyectounieventos.dto.LocalidadDTO;
 import com.example.proyectounieventos.modelo.documentos.Evento;
 import com.example.proyectounieventos.repositorios.EventoRepo;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-=======
-import com.example.proyectounieventos.dto.*;
-import com.example.proyectounieventos.modelo.documentos.Evento;
-import com.example.proyectounieventos.servicios.*;
+import com.example.proyectounieventos.servicios.EventoServicios;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,12 +12,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
->>>>>>> Adriana
 
 @RestController
 @RequestMapping("/Evento")
 public class EventoController {
-<<<<<<< HEAD
     @Autowired
     private EventoRepo eventoRepo;
 
@@ -41,7 +30,6 @@ public class EventoController {
                     HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-=======
 
     @Autowired
     private EventoServicios eventoServicios;  // Interface del servicio de evento
@@ -118,6 +106,5 @@ public class EventoController {
                 evento.getFecha()
         );
     }
->>>>>>> Adriana
 }
 
