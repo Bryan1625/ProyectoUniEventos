@@ -1,8 +1,13 @@
 package com.example.proyectounieventos.servicios;
 
 import com.example.proyectounieventos.dto.*;
+import com.example.proyectounieventos.repositorios.CuentaRepo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 
 public interface CuentaServicio {
+
 
     String crearCuenta (CrearCuentaDTO cuentaDTO) throws Exception;
 
