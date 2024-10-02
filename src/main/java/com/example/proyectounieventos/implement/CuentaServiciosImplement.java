@@ -2,7 +2,7 @@ package com.example.proyectounieventos.implement;
 
 import com.example.proyectounieventos.dto.*;
 import com.example.proyectounieventos.modelo.documentos.Cuenta;
-import com.example.proyectounieventos.modelo.enums.TipoUsuario;
+import com.example.proyectounieventos.modelo.enums.TipoCuenta;
 import com.example.proyectounieventos.modelo.vo.CodigoValidacion;
 import com.example.proyectounieventos.modelo.vo.EstadoCuenta;
 import com.example.proyectounieventos.modelo.vo.Usuario;
@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -47,7 +46,7 @@ public class CuentaServiciosImplement implements CuentaServicio {
         usuario.setTelefono(cuentaDTO.numeroTelefono());
         usuario.setCorreoElectronico(cuentaDTO.correoElectronico());
         usuario.setContraseña(hashPassword(cuentaDTO.contrasenia()));
-        usuario.setTipoUsuario(TipoUsuario.CLIENTE);
+        usuario.setTipoUsuario(TipoCuenta.CLIENTE);
         usuario.setActivo(true);
         usuario.setCuentaVerificada(false);
 
@@ -60,7 +59,7 @@ public class CuentaServiciosImplement implements CuentaServicio {
         Cuenta nuevaCuenta = Cuenta.builder()
                 .email(cuentaDTO.correoElectronico())
                 .contrasenia(hashPassword(cuentaDTO.contrasenia()))  // Hashear la contraseña antes de guardarla
-                .tipoUsuario(TipoUsuario.CLIENTE)  // Asumiendo que por defecto es "CLIENTE"
+                .tipoUsuario(TipoCuenta.CLIENTE)  // Asumiendo que por defecto es "CLIENTE"
                 .fechaRegistro(LocalDateTime.now())  // Registrar la fecha actual
                 .usuario(usuario)  // Asociar el objeto Usuario
                 .estado(estadoCuenta)  // Asignar el estado inicial de la cuenta

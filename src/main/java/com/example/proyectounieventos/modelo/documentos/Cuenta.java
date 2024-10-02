@@ -1,7 +1,6 @@
 package com.example.proyectounieventos.modelo.documentos;
 
-import com.example.proyectounieventos.modelo.enums.TipoUsuario;
-import com.example.proyectounieventos.modelo.vo.CodigoValidacion;
+import com.example.proyectounieventos.modelo.enums.TipoCuenta;
 import com.example.proyectounieventos.modelo.vo.EstadoCuenta;
 import com.example.proyectounieventos.modelo.vo.Usuario;
 import lombok.*;
@@ -29,29 +28,21 @@ public class Cuenta {
 
     private String email;
     private String contrasenia;
-    private TipoUsuario tipoUsuario;
+
+
     private LocalDateTime fechaRegistro;
     private Usuario usuario;
     private EstadoCuenta estado;
-
-    private CodigoValidacion codigoValidacion;
+    private TipoCuenta tipoCuenta;
 
     @Builder
-    public Cuenta(String id, String email, String contrasenia, TipoUsuario tipoUsuario,
-                  LocalDateTime fechaRegistro, Usuario usuario, EstadoCuenta estado,
-                  CodigoValidacion codigoValidacion) {
-
+    public Cuenta(String id, String email, String contrasenia, LocalDateTime fechaRegistro, Usuario usuario, EstadoCuenta estado, TipoCuenta tipoCuenta) {
         this.id = id;
         this.email = email;
         this.contrasenia = contrasenia;
-        this.tipoUsuario = tipoUsuario;
         this.fechaRegistro = fechaRegistro;
         this.usuario = usuario;
         this.estado = estado;
-        this.codigoValidacion = codigoValidacion;
+        this.tipoCuenta = tipoCuenta;
     }
-
-
-
-
 }
