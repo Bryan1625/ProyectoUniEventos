@@ -40,15 +40,10 @@ public class CuentaServiciosImplement implements CuentaServicio {
         // Crear el objeto Usuario desde los datos proporcionados en cuentaDTO
         // Create the Usuario object
         Usuario usuario = new Usuario();
-        usuario.setCedula(cuentaDTO.cedula());
-        usuario.setNombreCompleto(cuentaDTO.nombreCompleto());
+
         usuario.setDireccion(cuentaDTO.direccionResidencia());
         usuario.setTelefono(cuentaDTO.numeroTelefono());
-        usuario.setCorreoElectronico(cuentaDTO.correoElectronico());
-        usuario.setContraseña(hashPassword(cuentaDTO.contrasenia()));
-        usuario.setTipoUsuario(TipoCuenta.CLIENTE);
-        usuario.setActivo(true);
-        usuario.setCuentaVerificada(false);
+
 
         // Create EstadoCuenta object
         EstadoCuenta estadoCuenta = new EstadoCuenta();
@@ -58,12 +53,11 @@ public class CuentaServiciosImplement implements CuentaServicio {
         // Crear un objeto Cuenta utilizando el patrón Builder
         Cuenta nuevaCuenta = Cuenta.builder()
                 .email(cuentaDTO.correoElectronico())
-                .contrasenia(hashPassword(cuentaDTO.contrasenia()))  // Hashear la contraseña antes de guardarla
-                .tipoUsuario(TipoCuenta.CLIENTE)  // Asumiendo que por defecto es "CLIENTE"
+                 // Hashear la contraseña antes de guardarla// Asumiendo que por defecto es "CLIENTE"
                 .fechaRegistro(LocalDateTime.now())  // Registrar la fecha actual
                 .usuario(usuario)  // Asociar el objeto Usuario
                 .estado(estadoCuenta)  // Asignar el estado inicial de la cuenta
-                .codigoValidacion(generarCodigoValidacion(usuario.getId()))  // Generar un código de validación
+                  // Generar un código de validación
                 .build();
 
         // Guardar la nueva cuenta en la base de datos
@@ -94,9 +88,6 @@ public class CuentaServiciosImplement implements CuentaServicio {
         // Crear una nueva instancia de CodigoValidacion
         CodigoValidacion codigoValidacion = new CodigoValidacion();
         codigoValidacion.setCodigo(codigo);
-        codigoValidacion.setFechaGeneracion(fechaGeneracion);
-        codigoValidacion.setFechaExpiracion(fechaExpiracion);
-        codigoValidacion.setUsuarioId(usuarioId);
         codigoValidacion.setUsado(false);
 
         // Retornar el objeto

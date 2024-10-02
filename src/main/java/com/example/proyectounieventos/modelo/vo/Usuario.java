@@ -9,10 +9,12 @@ import java.util.List;
 @Data
 
 public class Usuario {
-    @Id
-    private String id;
-    private String cedula;
-    private String nombreCompleto;
+
+
+
+    private String usuario;
+    private String password;
+
     private String direccion;
     private String telefono;
 
