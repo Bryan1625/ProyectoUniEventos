@@ -1,6 +1,9 @@
 package com.example.proyectounieventos.dto;
 
 
+import com.example.proyectounieventos.modelo.enums.TipoEvento;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 public record EventoDTO(
@@ -9,9 +12,9 @@ public record EventoDTO(
         String direccion,
         String ciudad,
         String descripcion,
-        String tipoEvento,
+        TipoEvento tipoEvento,
         String posterUrl,
         String distribucionLocalidadesUrl,
         List<LocalidadDTO> localidades,
-        String fecha
+        LocalDateTime fecha
 ) {}

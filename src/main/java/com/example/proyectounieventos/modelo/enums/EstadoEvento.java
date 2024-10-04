@@ -1,8 +1,6 @@
 package com.example.proyectounieventos.modelo.enums;
 
 public enum EstadoEvento {
-
-    PROGRAMADO, FINALIZADO
-
+                SOLD_OUT, ACTIVO
 
 }
