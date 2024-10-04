@@ -9,10 +9,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Date;
 
 @Data
-@Document(collection = "pago")
 public class Pago {
-    @Id
-    private String id;
+
     private String codigoPago;
     private double monto;
     private Date fechaPago;
