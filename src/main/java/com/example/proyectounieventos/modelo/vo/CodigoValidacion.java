@@ -12,6 +12,4 @@ public class CodigoValidacion {
     @Id
     private String id;
     private String codigo;
-    private Usuario usuario;
-    private boolean usado;
 }

@@ -23,17 +23,24 @@ public class Cuenta {
 
     @Id
     @EqualsAndHashCode.Include
+    //Se utiliza para referenciar en la base de datos
     private String id;
-
+    //datos de una persona
     private String nombre;
     private String email;
     private String cedula;
-    private CodigoValidacion validacion;
 
+    //codigo de validacion que se utiliza a la hora del registro
+    private CodigoValidacion validacion;
+    //se registra la fecha
     private LocalDateTime fechaRegistro;
 
+    //la persona o la cuenta que se esta registrando, crea un usuario
     private Usuario usuario;
+
+    //El estaod de la cuenta se coloca como activo al momento del registro
     private EstadoCuenta estado;
+
     private TipoCuenta tipoCuenta;
 
     @Builder

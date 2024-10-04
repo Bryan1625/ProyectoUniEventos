@@ -10,11 +10,8 @@ import java.util.Date;
 public class Entrada {
     @Id
     private String id;
-    private String codigoQR;
-    private String codigoOrden;
-    private String codigoEvento;
-    private String localidad;
-    private int cantidad;
-    private Date fechaCompra;
+
+    private int asiento;
+
 
 }

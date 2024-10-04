@@ -28,12 +28,10 @@ public class Compra {
     private String id;  // Cambiado a long para autoincremento
 
     private List<DetalleCompra> detalles;
-    private ObjectId idCliente;
-    private float total;
+    private float valorTotal;
     private ObjectId idCupon;
     private LocalDateTime fecha;
-    private String codigoPasarela;
-    private Pago pago;
+
 
 
 

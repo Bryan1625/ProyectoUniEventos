@@ -9,13 +9,15 @@ import java.util.Date;
 @Data
 @Document(collection = "cupon")
 public class Cupon {
+
     @Id
     private String id;
     private String codigo;
-    private String nombre;
     private double porcentajeDescuento;
+    private Date fechaGeneracion;
     private Date fechaVencimiento;
+
     private TipoCupon tipo;
-    private boolean activo;
+
 
 }
