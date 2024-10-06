@@ -1,8 +1,10 @@
 package com.example.proyectounieventos.controlador;
 
-import com.example.proyectounieventos.dto.*;
+import com.example.proyectounieventos.dto.EventoDTO;
+import com.example.proyectounieventos.dto.LocalidadDTO;
 import com.example.proyectounieventos.modelo.documentos.Evento;
-import com.example.proyectounieventos.servicios.*;
+import com.example.proyectounieventos.repositorios.EventoRepo;
+import com.example.proyectounieventos.servicios.EventoServicios;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +16,20 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/Evento")
 public class EventoController {
+    @Autowired
+    private EventoRepo eventoRepo;
+
+    @PostMapping
+    public ResponseEntity<?> saveEvento(@RequestBody Evento evento){
+        try{
+            Evento eventoSave=eventoRepo.save(evento);
+            return new ResponseEntity<Evento>(eventoSave, HttpStatus.CREATED);
+
+        }catch (Exception e){
+            return new ResponseEntity<String>(e.getCause().toString(),
+                    HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
     @Autowired
     private EventoServicios eventoServicios;  // Interface del servicio de evento
