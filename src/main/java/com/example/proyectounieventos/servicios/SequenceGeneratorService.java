@@ -1,6 +1,7 @@
 package com.example.proyectounieventos.servicios;
 
 
+import com.example.proyectounieventos.modelo.vo.DatabaseSequence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.FindAndModifyOptions;
 import org.springframework.data.mongodb.core.MongoOperations;

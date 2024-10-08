@@ -1,4 +1,4 @@
-package com.example.proyectounieventos.implement;
+package com.example.proyectounieventos.servicios.impl;
 
 import com.example.proyectounieventos.modelo.vo.DetalleCompra;
 import com.example.proyectounieventos.servicios.CarritoServicios;
@@ -22,6 +22,11 @@ public class CarritoServiciosImplement implements CarritoServicios {
             throw new Exception("Detalle de compra no puede ser nulo.");
         }
         carrito.add(detalleCompra);
+    }
+
+    @Override
+    public void actualizarValorTotal() throws Exception {
+
     }
 
     @Override

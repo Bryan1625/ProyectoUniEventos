@@ -17,9 +17,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/Compra")
 
-
-
-
 public class CompraController {
     @Autowired
     private CompraRepo compraRepo;
