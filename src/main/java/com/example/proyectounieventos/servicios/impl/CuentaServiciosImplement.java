@@ -1,15 +1,14 @@
-package com.example.proyectounieventos.implement;
+package com.example.proyectounieventos.servicios.impl;
 
 import com.example.proyectounieventos.dto.cuenta.CrearCuentaDTO;
 import com.example.proyectounieventos.dto.cuenta.CuentaDTO;
-import com.example.proyectounieventos.dto.cuenta.EditarCuentaDTO;
 import com.example.proyectounieventos.dto.cuenta.InformacionCuentaDTO;
 import com.example.proyectounieventos.dto.usuario.CambiarPasswordDTO;
 import com.example.proyectounieventos.dto.usuario.UsuarioDTO;
 import com.example.proyectounieventos.modelo.documentos.Cuenta;
 import com.example.proyectounieventos.modelo.vo.CodigoValidacion;
 import com.example.proyectounieventos.modelo.vo.EstadoCuenta;
-import com.example.proyectounieventos.modelo.vo.Usuario;
+import com.example.proyectounieventos.modelo.documentos.Usuario;
 import com.example.proyectounieventos.repositorios.CuentaRepo;
 import com.example.proyectounieventos.servicios.CuentaServicio;
 import org.springframework.beans.factory.annotation.Autowired;

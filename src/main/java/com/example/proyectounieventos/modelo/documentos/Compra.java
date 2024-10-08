@@ -31,7 +31,7 @@ public class Compra {
     private String codigo;
 
     //Relacion con el comprador
-    private ObjectId Cliente;
+    private ObjectId IdCliente;
 
     //Listado de Detalle compra
 
@@ -45,6 +45,16 @@ public class Compra {
     //ESTADO COMPRA, SI ES ESTA RECHAZADA, PENDIENTE, COMPLETADA
     private EstadoCompra estado;
 
-
-
+    public Compra(String id, String codigo,
+                  ObjectId idCliente, List<DetalleCompra> detalles,
+                  float valorTotal, ObjectId idCupon, LocalDateTime fecha, EstadoCompra estado) {
+        this.id = id;
+        this.codigo = codigo;
+        IdCliente = idCliente;
+        this.detalles = detalles;
+        this.valorTotal = valorTotal;
+        this.idCupon = idCupon;
+        this.fecha = fecha;
+        this.estado = estado;
+    }
 }

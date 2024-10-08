@@ -19,7 +19,8 @@ public interface EventoServicios {
     boolean editarEvento(Evento evento)throws Exception;
     boolean eliminarEventoId(String idEvento)throws Exception;
     void eliminarEvento (Evento evento)throws Exception;
-    void eliminarEvento (String id)throws Exception;
+
+    boolean eliminarEvento (String id)throws Exception;
 
     //LISTAR EVENTO Y FILTRAR
 

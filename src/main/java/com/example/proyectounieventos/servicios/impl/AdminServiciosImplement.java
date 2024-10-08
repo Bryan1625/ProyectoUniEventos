@@ -1,4 +1,4 @@
-package com.example.proyectounieventos.implement;
+package com.example.proyectounieventos.servicios.impl;
 
 import com.example.proyectounieventos.dto.evento.EventoDTO;
 import com.example.proyectounieventos.dto.localidad.LocalidadDTO;
@@ -112,8 +112,8 @@ public class AdminServiciosImplement implements AdminServicios, EventoServicios,
     }
 
     @Override
-    public void eliminarEvento(String id) throws Exception {
-
+    public boolean eliminarEvento(String id) throws Exception {
+        return false;
     }
 
     //LISTAR EVENTOS

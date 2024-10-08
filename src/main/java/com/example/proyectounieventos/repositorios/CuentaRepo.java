@@ -19,7 +19,7 @@ public interface CuentaRepo extends MongoRepository<Cuenta, String> {
     //Optional<Cuenta> findByUsuariocuentaId(String usuarioId);
 
     // Método para buscar cuentas por tipo de usuario
-    List<Cuenta> findByTipoUsuario(TipoCuenta tipoUsuario);
+    List<Cuenta> findByTipoCuenta(TipoCuenta tipoUsuario);
 
     // Método para buscar cuentas por estado de cuenta
     List<Cuenta> findByEstado(EstadoCuenta estado);

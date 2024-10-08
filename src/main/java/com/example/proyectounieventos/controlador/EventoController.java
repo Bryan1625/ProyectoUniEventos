@@ -34,17 +34,6 @@ public class EventoController {
     @Autowired
     private EventoServicios eventoServicios;  // Interface del servicio de evento
 
-    @PostMapping
-    public ResponseEntity<EventoDTO> crearEvento(@RequestBody EventoDTO eventoDTO) {
-        try {
-            Evento eventoCreado = eventoServicios.crearEvento(eventoDTO);
-            EventoDTO response = mapearEventoAEventoDTO(eventoCreado);
-            return new ResponseEntity<>(response, HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
     @GetMapping("/{id}")
     public ResponseEntity<EventoDTO> obtenerEventoPorId(@PathVariable String id) throws Exception {
         Evento evento = eventoServicios.obtenerEventoPorId(id);

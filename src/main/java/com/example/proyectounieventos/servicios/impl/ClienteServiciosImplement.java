@@ -1,4 +1,4 @@
-package com.example.proyectounieventos.implement;
+package com.example.proyectounieventos.servicios.impl;
 
 import com.example.proyectounieventos.excepciones.Cliente.*;
 import com.example.proyectounieventos.modelo.documentos.Compra;
@@ -167,10 +167,10 @@ public class ClienteServiciosImplement implements ClienteServicios {
     }
 
     @Override
-    public List<Compra> historialCompras(ObjectId idUsuario) throws Exception {
+    public List<Compra> historialCompras(ObjectId idCuenta) throws Exception {
         try {
             // Obtenemos el historial de compras para un usuario específico
-            List<Compra> historialCompras = compraRepo.findByCliente(idUsuario);
+            List<Compra> historialCompras = compraRepo.findByIdCliente(idCuenta);
 
             if (historialCompras.isEmpty()) {
                 // Lanza excepción si no se encuentran compras históricas

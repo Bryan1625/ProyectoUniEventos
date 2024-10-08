@@ -3,6 +3,7 @@ package com.example.proyectounieventos.servicios.impl;
 import com.example.proyectounieventos.dto.evento.EventoDTO;
 import com.example.proyectounieventos.dto.localidad.LocalidadDTO;
 import com.example.proyectounieventos.modelo.documentos.Evento;
+import com.example.proyectounieventos.modelo.documentos.Localidad;
 import com.example.proyectounieventos.modelo.enums.EstadoEvento;
 import com.example.proyectounieventos.repositorios.EventoRepo;
 import com.example.proyectounieventos.servicios.EventoServicios;
@@ -26,17 +27,38 @@ public class EventoServicioImpl implements EventoServicios {
         return eventoRepo.save(evento);
     }
 
+    @Override
+    public Evento crearEvento(Evento evento) throws Exception {
+        return null;
+    }
 
     @Override
-    public String eliminarEvento(String id) throws Exception {
+    public boolean editarEvento(Evento evento) throws Exception {
+        return false;
+    }
+
+    @Override
+    public boolean eliminarEventoId(String idEvento) throws Exception {
+        return false;
+    }
+
+    @Override
+    public void eliminarEvento(Evento evento) throws Exception {
+
+    }
+
+
+    @Override
+    public boolean eliminarEvento(String id) throws Exception {
         // Buscar el evento por ID
         Optional<Evento> evento = eventoRepo.findById(id);
         if (evento.isPresent()) {
             eventoRepo.deleteById(id);
-            return "Evento eliminado con éxito";
+            return true;
         } else {
             throw new Exception("Evento no encontrado");
         }
+
     }
 
     /*
@@ -104,30 +126,7 @@ public class EventoServicioImpl implements EventoServicios {
     * */
     @Override
     public Evento actualizarEvento(String id, EventoDTO eventoDTO) throws Exception {
-
-        // Actualizar evento
-        Optional<Evento> eventoOptional = eventoRepo.findById(id);
-        if (eventoOptional.isPresent()) {
-            Evento evento = eventoOptional.get();
-            evento.setNombre(eventoDTO.nombre());
-            evento.setDescripcion(eventoDTO.descripcion());
-            evento.setDireccion(eventoDTO.direccion());
-            evento.setCiudad(eventoDTO.ciudad());
-            evento.setTipo(eventoDTO.tipoEvento());
-            evento.setFecha(eventoDTO.fecha());
-            evento.setImagenPortada(eventoDTO.posterUrl());
-            evento.setImagenLocalidades(eventoDTO.distribucionLocalidadesUrl());
-
-            // Actualizar localidades
-            List<Localidad> localidades = eventoDTO.localidades().stream()
-                    .map(localidadDTO -> new Localidad(localidadDTO.nombre(), localidadDTO.precio(), localidadDTO.capacidadMaxima()))
-                    .collect(Collectors.toList());
-            evento.setLocalidades(localidades);
-
-            return eventoRepo.save(evento);  // Guardar el evento actualizado
-        } else {
-            throw new Exception("Evento no encontrado para actualizar");
-        }
+        return null;
     }
 
     @Override
@@ -137,9 +136,19 @@ public class EventoServicioImpl implements EventoServicios {
     }
 
     @Override
+    public List<Localidad> obtenerLocalidadesPorEvento(Evento evento) throws Exception {
+        return List.of();
+    }
+
+    @Override
+    public boolean agregarLocalidad(Localidad localidad) throws Exception {
+        return false;
+    }
+
+    @Override
     public Localidad agregarLocalidad(String eventoId, LocalidadDTO localidadDTO) throws Exception {
         Evento evento = obtenerEventoPorId(eventoId);
-        Localidad nuevaLocalidad = new Localidad(localidadDTO.nombre(), localidadDTO.precio(), localidadDTO.capacidadMaxima());
+        Localidad nuevaLocalidad = new Localidad();
         evento.getLocalidades().add(nuevaLocalidad);
         eventoRepo.save(evento);
         return nuevaLocalidad;
@@ -154,46 +163,16 @@ public class EventoServicioImpl implements EventoServicios {
                 .collect(Collectors.toList());
 
         return new Evento(
-                eventoDTO.id(),
-                eventoDTO.nombre(),
-                eventoDTO.descripcion(),
-                eventoDTO.fecha(),
-                eventoDTO.tipoEvento(),
-                eventoDTO.direccion(),
-                eventoDTO.ciudad(),
-                localidades,
-                eventoDTO.posterUrl(),
-                eventoDTO.distribucionLocalidadesUrl(),
-                EstadoEvento.ACTIVO
         );
     }
 
     public Localidad mapearLocalidadDTOALocalidad(LocalidadDTO localidadDTO) {
-        return new Localidad(
-                localidadDTO.nombre(),
-                localidadDTO.precio(),
-                localidadDTO.capacidadMaxima()
-        );
+        return null;
     }
 
     // Método auxiliar para mapear de Evento a EventoDTO
     private EventoDTO mapearEventoAEventoDTO(Evento evento) {
-        List<LocalidadDTO> localidades = evento.getLocalidades().stream()
-                .map(localidad -> new LocalidadDTO(localidad.getNombre(), localidad.getPrecio(), localidad.getCapacidadMaxima()))
-                .collect(Collectors.toList());
-
-        return new EventoDTO(
-                evento.getEventoId(),
-                evento.getNombre(),
-                evento.getDireccion(),
-                evento.getCiudad(),
-                evento.getDescripcion(),
-                evento.getTipo(),
-                evento.getImagenPortada(),
-                evento.getImagenLocalidades(),
-                localidades,
-                evento.getFecha()
-        );
+        return null;
     }
 }
 
