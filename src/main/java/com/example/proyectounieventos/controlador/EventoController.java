@@ -1,7 +1,7 @@
 package com.example.proyectounieventos.controlador;
 
-import com.example.proyectounieventos.dto.EventoDTO;
-import com.example.proyectounieventos.dto.LocalidadDTO;
+import com.example.proyectounieventos.dto.evento.EventoDTO;
+import com.example.proyectounieventos.dto.localidad.LocalidadDTO;
 import com.example.proyectounieventos.modelo.documentos.Evento;
 import com.example.proyectounieventos.repositorios.EventoRepo;
 import com.example.proyectounieventos.servicios.EventoServicios;
@@ -76,6 +76,8 @@ public class EventoController {
         }
     }
 
+    //AQUI SE NECESITA ES EL METODO DEL IMPLEMENTO
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarEvento(@PathVariable String id) {
 
@@ -90,7 +92,7 @@ public class EventoController {
     // Método para mapear un Evento a un EventoDTO
     private EventoDTO mapearEventoAEventoDTO(Evento evento) {
         List<LocalidadDTO> localidades = evento.getLocalidades().stream()
-                .map(localidad -> new LocalidadDTO(localidad.getNombre(), localidad.getPrecio(), localidad.getCapacidadMaxima()))
+                .map(localidad -> new LocalidadDTO(localidad.getNombre(), localidad.getPrecio(), localidad.getCapacidadMax()))
                 .collect(Collectors.toList());
 
         return new EventoDTO(

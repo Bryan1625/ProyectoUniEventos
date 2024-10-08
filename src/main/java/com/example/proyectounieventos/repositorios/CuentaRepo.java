@@ -1,7 +1,7 @@
 package com.example.proyectounieventos.repositorios;
 
 import com.example.proyectounieventos.modelo.documentos.Cuenta;
-import com.example.proyectounieventos.modelo.enums.TipoUsuario;
+import com.example.proyectounieventos.modelo.enums.TipoCuenta;
 import com.example.proyectounieventos.modelo.vo.EstadoCuenta;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
@@ -19,7 +19,7 @@ public interface CuentaRepo extends MongoRepository<Cuenta, String> {
     //Optional<Cuenta> findByUsuariocuentaId(String usuarioId);
 
     // Método para buscar cuentas por tipo de usuario
-    List<Cuenta> findByTipoUsuario(TipoUsuario tipoUsuario);
+    List<Cuenta> findByTipoUsuario(TipoCuenta tipoUsuario);
 
     // Método para buscar cuentas por estado de cuenta
     List<Cuenta> findByEstado(EstadoCuenta estado);

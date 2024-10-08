@@ -1,8 +1,12 @@
 package com.example.proyectounieventos.implement;
 
-import com.example.proyectounieventos.dto.*;
+import com.example.proyectounieventos.dto.cuenta.CrearCuentaDTO;
+import com.example.proyectounieventos.dto.cuenta.CuentaDTO;
+import com.example.proyectounieventos.dto.cuenta.EditarCuentaDTO;
+import com.example.proyectounieventos.dto.cuenta.InformacionCuentaDTO;
+import com.example.proyectounieventos.dto.usuario.CambiarPasswordDTO;
+import com.example.proyectounieventos.dto.usuario.UsuarioDTO;
 import com.example.proyectounieventos.modelo.documentos.Cuenta;
-import com.example.proyectounieventos.modelo.enums.TipoCuenta;
 import com.example.proyectounieventos.modelo.vo.CodigoValidacion;
 import com.example.proyectounieventos.modelo.vo.EstadoCuenta;
 import com.example.proyectounieventos.modelo.vo.Usuario;
@@ -30,20 +34,16 @@ public class CuentaServiciosImplement implements CuentaServicio {
         if (cuentaDTO.cedula() == null || cuentaDTO.cedula().isEmpty()) {
             throw new Exception("La cédula es obligatoria.");
         }
-        if (cuentaDTO.correoElectronico() == null || !cuentaDTO.correoElectronico().contains("@")) {
+        if (cuentaDTO.email() == null || !cuentaDTO.email().contains("@")) {
             throw new Exception("Correo electrónico inválido.");
         }
-        if (cuentaDTO.contrasenia() == null || cuentaDTO.contrasenia().length() < 6) {
+        if (cuentaDTO.usuario().password() == null || cuentaDTO.usuario().password().length() < 6) {
             throw new Exception("La contraseña debe tener al menos 6 caracteres.");
         }
 
         // Crear el objeto Usuario desde los datos proporcionados en cuentaDTO
         // Create the Usuario object
         Usuario usuario = new Usuario();
-
-        usuario.setDireccion(cuentaDTO.direccionResidencia());
-        usuario.setTelefono(cuentaDTO.numeroTelefono());
-
 
         // Create EstadoCuenta object
         EstadoCuenta estadoCuenta = new EstadoCuenta();
@@ -52,7 +52,7 @@ public class CuentaServiciosImplement implements CuentaServicio {
 
         // Crear un objeto Cuenta utilizando el patrón Builder
         Cuenta nuevaCuenta = Cuenta.builder()
-                .email(cuentaDTO.correoElectronico())
+                .email(cuentaDTO.email())
                  // Hashear la contraseña antes de guardarla// Asumiendo que por defecto es "CLIENTE"
                 .fechaRegistro(LocalDateTime.now())  // Registrar la fecha actual
                 .usuario(usuario)  // Asociar el objeto Usuario
@@ -67,11 +67,23 @@ public class CuentaServiciosImplement implements CuentaServicio {
         return "La cuenta ha sido creada exitosamente.";
     }
 
+    @Override
+    public String editarCuenta(CuentaDTO cuentaDTO) throws Exception {
+        return "";
+    }
+
+    @Override
+    public String eliminarCuenta(String cuentaID) throws Exception {
+        return "";
+    }
+
     // Método auxiliar para hashear la contraseña (usando BCrypt)
     private String hashPassword(String contrasenia) {
         return BCrypt.hashpw(contrasenia, BCrypt.gensalt());
     }
 
+
+    //TEMPORAL 
     private CodigoValidacion generarCodigoValidacion(String usuarioId) {
         // Generar un código aleatorio (puedes personalizarlo)
         String codigo = UUID.randomUUID().toString();
@@ -88,21 +100,11 @@ public class CuentaServiciosImplement implements CuentaServicio {
         // Crear una nueva instancia de CodigoValidacion
         CodigoValidacion codigoValidacion = new CodigoValidacion();
         codigoValidacion.setCodigo(codigo);
-        codigoValidacion.setUsado(false);
 
         // Retornar el objeto
         return codigoValidacion;
     }
 
-    @Override
-    public String editarCuenta(EditarCuentaDTO cuentaDTO) throws Exception {
-        return "";
-    }
-
-    @Override
-    public String eliminarCuenta(String cuentaID) throws Exception {
-        return "";
-    }
 
     @Override
     public InformacionCuentaDTO obtenerInformacionCuenta(String cuentaID) throws Exception {
@@ -120,7 +122,7 @@ public class CuentaServiciosImplement implements CuentaServicio {
     }
 
     @Override
-    public String iniciarSesion(LoginDTO loginDTO) throws Exception {
+    public String iniciarSesion(UsuarioDTO loginDTO) throws Exception {
         return "";
     }
 }

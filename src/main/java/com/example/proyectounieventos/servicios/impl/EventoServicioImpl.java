@@ -1,9 +1,9 @@
 package com.example.proyectounieventos.servicios.impl;
 
-import com.example.proyectounieventos.dto.*;
+import com.example.proyectounieventos.dto.evento.EventoDTO;
+import com.example.proyectounieventos.dto.localidad.LocalidadDTO;
 import com.example.proyectounieventos.modelo.documentos.Evento;
 import com.example.proyectounieventos.modelo.enums.EstadoEvento;
-import com.example.proyectounieventos.modelo.vo.Localidad;
 import com.example.proyectounieventos.repositorios.EventoRepo;
 import com.example.proyectounieventos.servicios.EventoServicios;
 import org.springframework.beans.factory.annotation.Autowired;

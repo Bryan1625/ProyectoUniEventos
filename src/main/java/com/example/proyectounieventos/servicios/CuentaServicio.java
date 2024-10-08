@@ -1,16 +1,18 @@
 package com.example.proyectounieventos.servicios;
 
-import com.example.proyectounieventos.dto.*;
+import com.example.proyectounieventos.dto.cuenta.CrearCuentaDTO;
+import com.example.proyectounieventos.dto.cuenta.CuentaDTO;
+import com.example.proyectounieventos.dto.cuenta.InformacionCuentaDTO;
+import com.example.proyectounieventos.dto.usuario.CambiarPasswordDTO;
+import com.example.proyectounieventos.dto.usuario.UsuarioDTO;
 
 public interface CuentaServicio {
 
-    String crearCuenta (CuentaDTO cuentaDTO) throws Exception;
+    String crearCuenta (CrearCuentaDTO cuentaDTO) throws Exception;
 
     String editarCuenta (CuentaDTO cuentaDTO) throws Exception;
 
     String eliminarCuenta (String cuentaID) throws Exception;
-
-    String eliminarCuenta(CuentaDTO cuentaDTO) throws Exception;
 
     InformacionCuentaDTO obtenerInformacionCuenta (String cuentaID) throws Exception;
 
@@ -18,7 +20,7 @@ public interface CuentaServicio {
 
     String cambiarPassword (CambiarPasswordDTO cambiarPasswordDTO) throws Exception;
 
-    String iniciarSesion (LoginDTO loginDTO) throws Exception;
+    String iniciarSesion (UsuarioDTO loginDTO) throws Exception;
 
 
 

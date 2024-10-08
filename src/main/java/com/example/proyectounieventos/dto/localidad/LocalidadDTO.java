@@ -1,4 +1,4 @@
-package com.example.proyectounieventos.dto;
+package com.example.proyectounieventos.dto.localidad;
 
 public record LocalidadDTO(
         String nombre,

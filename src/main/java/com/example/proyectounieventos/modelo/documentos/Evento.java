@@ -30,7 +30,7 @@ public class Evento {
     private LocalDateTime fecha;
     private TipoEvento tipo;
     private String direccion;
-    private String ciudad;
+
     private List<Localidad> localidades;
 
     private String imagenPortada;
@@ -39,21 +39,22 @@ public class Evento {
     private EstadoEvento estadoEvento;
 
     @Builder
-    public Evento(String eventoId, String nombre, String descripcion, LocalDateTime fecha,
-                  TipoEvento tipo, String direccion, String ciudad, List<Localidad> localidades,
-                  String imagenPortada, String imagenLocalidades, EstadoEvento estadoEvento) {
-
+    public Evento(String eventoId, ObjectId ciudad, String nombre,
+                  String descripcion, LocalDateTime fecha, TipoEvento tipo,
+                  String direccion, List<Localidad> localidades, String imagenPortada,
+                  String imagenLocalidades, EstadoEvento estadoEvento) {
         this.eventoId = eventoId;
+        Ciudad = ciudad;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fecha = fecha;
         this.tipo = tipo;
         this.direccion = direccion;
-        this.ciudad = ciudad;
         this.localidades = localidades;
         this.imagenPortada = imagenPortada;
         this.imagenLocalidades = imagenLocalidades;
         this.estadoEvento = estadoEvento;
-
     }
+
+
 }

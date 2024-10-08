@@ -1,6 +1,7 @@
 package com.example.proyectounieventos.modelo.documentos;
 
 
+import com.example.proyectounieventos.modelo.enums.EstadoCompra;
 import com.example.proyectounieventos.modelo.vo.DetalleCompra;
 import com.example.proyectounieventos.modelo.vo.Identificador;
 import com.example.proyectounieventos.modelo.vo.Pago;
@@ -25,13 +26,24 @@ import java.util.List;
 public class Compra {
 
     @Id
-    private String id;  // Cambiado a long para autoincremento
+    private String id;// Cambiado a long para autoincremento
+
+    private String codigo;
+
+    //Relacion con el comprador
+    private ObjectId Cliente;
+
+    //Listado de Detalle compra
 
     private List<DetalleCompra> detalles;
     private float valorTotal;
+
+
     private ObjectId idCupon;
     private LocalDateTime fecha;
 
+    //ESTADO COMPRA, SI ES ESTA RECHAZADA, PENDIENTE, COMPLETADA
+    private EstadoCompra estado;
 
 
 

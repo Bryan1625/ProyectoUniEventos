@@ -5,10 +5,7 @@ import com.example.proyectounieventos.repositorios.CarritoRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/Carrito")
@@ -25,6 +22,21 @@ public class CarritoController {
         }catch (Exception e){
             return new ResponseEntity<String>(e.getCause().toString(),
                     HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    // Método para eliminar un carrito por su id
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> eliminarCarrito(@PathVariable("id") String id) {
+        try {
+            if (carritoRepo.existsById(id)) {
+                carritoRepo.deleteById(id);
+                return new ResponseEntity<String>("Carrito eliminado exitosamente", HttpStatus.OK);
+            } else {
+                return new ResponseEntity<String>("Carrito no encontrado", HttpStatus.NOT_FOUND);
+            }
+        } catch (Exception e) {
+            return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

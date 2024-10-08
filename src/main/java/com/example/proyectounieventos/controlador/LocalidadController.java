@@ -1,7 +1,7 @@
 package com.example.proyectounieventos.controlador;
 
-import com.example.proyectounieventos.dto.LocalidadDTO;
-import com.example.proyectounieventos.modelo.vo.Localidad;
+import com.example.proyectounieventos.dto.localidad.LocalidadDTO;
+import com.example.proyectounieventos.modelo.documentos.Localidad;
 import com.example.proyectounieventos.servicios.EventoServicios;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -42,7 +42,7 @@ public class LocalidadController {
     }
 
     public LocalidadDTO mapearLocalidadALocalidadDTO(Localidad localidad) {
-        return new LocalidadDTO(localidad.getNombre(), localidad.getPrecio(), localidad.getCapacidadMaxima());
+        return new LocalidadDTO(localidad.getNombre(), localidad.getPrecio(), localidad.getCapacidadMax());
     }
 }
 

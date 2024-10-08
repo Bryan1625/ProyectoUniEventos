@@ -22,7 +22,10 @@ public class Carrito {
 
     @Id
     private String id;
+
+    //Relacion con el Usuario
     private ObjectId idUsuario;
+
     private List<Compra> items;
 
     @Builder

@@ -1,4 +1,4 @@
-package com.example.proyectounieventos.dto;
+package com.example.proyectounieventos.dto.usuario;
 
 public record CambiarPasswordDTO(
         String correoElectronico,
