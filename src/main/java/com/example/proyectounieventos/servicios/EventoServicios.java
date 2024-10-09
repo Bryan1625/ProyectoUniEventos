@@ -3,7 +3,7 @@ package com.example.proyectounieventos.servicios;
 import com.example.proyectounieventos.dto.EventoDTO;
 import com.example.proyectounieventos.dto.LocalidadDTO;
 import com.example.proyectounieventos.modelo.documentos.Evento;
-import com.example.proyectounieventos.modelo.vo.Localidad;
+import com.example.proyectounieventos.modelo.documentos.Localidad;
 
 import java.util.List;
 

@@ -31,7 +31,7 @@ public class Compra {
     private float valorTotal;
     private ObjectId idCupon;
     private LocalDateTime fecha;
-
+    private String idCliente; //lo pide el controlador de compra para usar metodos
 
 
 

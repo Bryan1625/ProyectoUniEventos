@@ -1,7 +1,7 @@
 package com.example.proyectounieventos.dto;
 
 import com.example.proyectounieventos.modelo.documentos.Cuenta;
-import com.example.proyectounieventos.modelo.enums.TipoUsuario;
+import com.example.proyectounieventos.modelo.enums.TipoCuenta;
 
 
 public record CuentaDTO(
@@ -21,8 +21,8 @@ public record CuentaDTO(
         return getpasswd();
     }
 
-    public TipoUsuario getTipoUsuario() {
-        return getTipoUsuario();
+    public TipoCuenta getTipoCuenta() {
+        return getTipoCuenta();
     }
 
     public void eliminar (String cedula){

@@ -19,17 +19,21 @@ public class EventoController {
     @Autowired
     private EventoRepo eventoRepo;
 
-    @PostMapping
-    public ResponseEntity<?> saveEvento(@RequestBody Evento evento){
-        try{
-            Evento eventoSave=eventoRepo.save(evento);
-            return new ResponseEntity<Evento>(eventoSave, HttpStatus.CREATED);
 
-        }catch (Exception e){
-            return new ResponseEntity<String>(e.getCause().toString(),
-                    HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+////////////////ESTE METODO CAUSA ERRORES DEBIDO A REFERENCIAR LA MISMA RUTA HTTP QUE EL METODO DE CREAR EVENTO///////////////
+//    @PostMapping
+//    public ResponseEntity<?> saveEvento(@RequestBody Evento evento){
+//        try{
+//            Evento eventoSave=eventoRepo.save(evento);
+//            return new ResponseEntity<Evento>(eventoSave, HttpStatus.CREATED);
+//
+//        }catch (Exception e){
+//            return new ResponseEntity<String>(e.getCause().toString(),
+//                    HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
     @Autowired
     private EventoServicios eventoServicios;  // Interface del servicio de evento
@@ -90,14 +94,14 @@ public class EventoController {
     // Método para mapear un Evento a un EventoDTO
     private EventoDTO mapearEventoAEventoDTO(Evento evento) {
         List<LocalidadDTO> localidades = evento.getLocalidades().stream()
-                .map(localidad -> new LocalidadDTO(localidad.getNombre(), localidad.getPrecio(), localidad.getCapacidadMaxima()))
+                .map(localidad -> new LocalidadDTO(localidad.getNombre(), localidad.getPrecio(), localidad.getCapacidadMax()))
                 .collect(Collectors.toList());
 
         return new EventoDTO(
-                evento.getEventoId(),
+                evento.getId(),
                 evento.getNombre(),
                 evento.getDireccion(),
-                evento.getCiudad(),
+                evento.getCiudad().toString() , //to string por ser un object id, no se si funciona así
                 evento.getDescripcion(),
                 evento.getTipo(),
                 evento.getImagenPortada(),
