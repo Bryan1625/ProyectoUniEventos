@@ -93,7 +93,7 @@ public class CompraController {
     @GetMapping("/filtrar/cliente/{idCliente}")
     public ResponseEntity<?> getComprasByIdCliente(@PathVariable String idCliente) {
         try {
-            List<Compra> compras = compraRepo.findByIdCliente(new ObjectId(idCliente));
+            List<Compra> compras = compraRepo.findByIdCliente(idCliente);
             if (!compras.isEmpty()) {
                 return new ResponseEntity<>(compras, HttpStatus.OK);
             } else {
