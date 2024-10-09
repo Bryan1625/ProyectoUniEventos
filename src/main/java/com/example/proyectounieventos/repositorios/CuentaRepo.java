@@ -10,6 +10,6 @@ import java.util.Optional;
 
 public interface CuentaRepo extends MongoRepository<Cuenta, String> {
 
-    Optional<Cuenta> findByCorreoElectronico(String s);
+    Optional<Cuenta> findByEmail(String s);
     
 }

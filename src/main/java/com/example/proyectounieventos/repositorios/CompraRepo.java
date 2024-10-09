@@ -16,7 +16,7 @@ public interface CompraRepo extends MongoRepository<Compra, String> {
     List<Compra> findByFechaBetween(LocalDateTime startDate, LocalDateTime endDate);
 
     // Buscar compras por ID del cliente
-    List<Compra> findByIdCliente(ObjectId idCliente);
+    List<Compra> findByIdCliente(String idCliente);
 
 
 }

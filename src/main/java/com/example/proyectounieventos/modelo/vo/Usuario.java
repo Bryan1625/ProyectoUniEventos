@@ -2,13 +2,16 @@ package com.example.proyectounieventos.modelo.vo;
 import com.example.proyectounieventos.modelo.documentos.Cuenta;
 import com.example.proyectounieventos.modelo.enums.TipoCuenta;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
 @Data
-
+@Getter
+@Setter
 public class Usuario {
 
     //Usuario y contraseñas que quedan asignados en el sistema
