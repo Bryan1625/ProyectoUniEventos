@@ -1,4 +1,4 @@
-package com.example.proyectounieventos.dto;
+package com.example.proyectounieventos.dto.pago;
 
 import java.time.LocalDateTime;
 

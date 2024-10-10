@@ -1,6 +1,6 @@
 package com.example.proyectounieventos.implement;
 
-import com.example.proyectounieventos.dto.*;
+import com.example.proyectounieventos.dto.cuenta.*;
 import com.example.proyectounieventos.modelo.documentos.Cuenta;
 import com.example.proyectounieventos.modelo.vo.CodigoValidacion;
 import com.example.proyectounieventos.modelo.vo.EstadoCuenta;
@@ -26,13 +26,13 @@ public class CuentaServiciosImplement implements CuentaServicio {
     @Override
     public String crearCuenta(CrearCuentaDTO cuentaDTO) throws Exception {
         // Validaciones básicas de los datos
-        if (cuentaDTO.getCedula() == null || cuentaDTO.getCedula().isEmpty()) {
+        if (cuentaDTO.cedula() == null || cuentaDTO.cedula().isEmpty()) {
             throw new Exception("La cédula es obligatoria.");
         }
-        if (cuentaDTO.getEmail() == null || !cuentaDTO.getEmail().contains("@")) {
+        if (cuentaDTO.email() == null || !cuentaDTO.email().contains("@")) {
             throw new Exception("Correo electrónico inválido.");
         }
-        if (cuentaDTO.getContrasenia() == null || cuentaDTO.getContrasenia().length() < 6) {
+        if (cuentaDTO.contrasenia() == null || cuentaDTO.contrasenia().length() < 6) {
             throw new Exception("La contraseña debe tener al menos 6 caracteres.");
         }
 
@@ -51,7 +51,7 @@ public class CuentaServiciosImplement implements CuentaServicio {
 
         // Crear un objeto Cuenta utilizando el patrón Builder
         Cuenta nuevaCuenta = Cuenta.builder()
-                .email(cuentaDTO.getEmail())
+                .email(cuentaDTO.email())
                  // Hashear la contraseña antes de guardarla// Asumiendo que por defecto es "CLIENTE"
                 .fechaRegistro(LocalDateTime.now())  // Registrar la fecha actual
                 .usuario(usuario)  // Asociar el objeto Usuario
@@ -67,7 +67,7 @@ public class CuentaServiciosImplement implements CuentaServicio {
     }
 
     @Override
-    public String editarCuenta(CuentaDTO cuentaDTO) throws Exception {
+    public String editarCuenta(ActualizarCuentaDTO actualizarCuentaDTO) throws Exception {
         return "";
     }
 

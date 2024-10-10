@@ -22,17 +22,14 @@ public class Localidad {
 
     private double precio;
 
-    private int capacidadMax;
-
-    private List<Entrada> entradaList;
+    private List<Entrada> entradas;
 
     @Builder
-    public Localidad(String id, String nombre, double precio, int capacidadMax,
-                     List<Entrada> entradaList) {
+    public Localidad(String id, String nombre, double precio,
+                     List<Entrada> entradas) {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
-        this.capacidadMax = capacidadMax;
-        this.entradaList = entradaList;
+        this.entradas = entradas;
     }
 }

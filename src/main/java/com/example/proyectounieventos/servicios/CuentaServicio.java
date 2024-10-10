@@ -1,9 +1,6 @@
 package com.example.proyectounieventos.servicios;
 
-import com.example.proyectounieventos.dto.*;
-import com.example.proyectounieventos.repositorios.CuentaRepo;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.example.proyectounieventos.dto.cuenta.*;
 
 
 public interface CuentaServicio {
@@ -11,7 +8,7 @@ public interface CuentaServicio {
 
     String crearCuenta (CrearCuentaDTO cuentaDTO) throws Exception;
 
-    String editarCuenta (CuentaDTO cuentaDTO) throws Exception;
+    String editarCuenta (ActualizarCuentaDTO actualizarCuentaDTO) throws Exception;
 
     String eliminarCuenta (String cuentaID) throws Exception;
 

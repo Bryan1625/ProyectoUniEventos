@@ -1,9 +1,9 @@
 package com.example.proyectounieventos.implement;
 
 import com.example.proyectounieventos.modelo.vo.DetalleCompra;
-import com.example.proyectounieventos.servicios.CarritoServcios;
+import com.example.proyectounieventos.servicios.CarritoServicios;
 
-public class CarritoServiciosImplement implements CarritoServcios {
+public class CarritoServiciosImplement implements CarritoServicios {
     @Override
     public void agregarItem(DetalleCompra detalleCompra) throws Exception {
 

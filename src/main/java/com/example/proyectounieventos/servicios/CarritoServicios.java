@@ -2,7 +2,7 @@ package com.example.proyectounieventos.servicios;
 
 import com.example.proyectounieventos.modelo.vo.DetalleCompra;
 
-public interface CarritoServcios {
+public interface CarritoServicios {
 
 
     void agregarItem (DetalleCompra detalleCompra) throws Exception;

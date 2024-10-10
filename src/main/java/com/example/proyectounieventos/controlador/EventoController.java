@@ -1,7 +1,8 @@
 package com.example.proyectounieventos.controlador;
 
-import com.example.proyectounieventos.dto.EventoDTO;
-import com.example.proyectounieventos.dto.LocalidadDTO;
+import com.example.proyectounieventos.dto.evento.EntradaDTO;
+import com.example.proyectounieventos.dto.evento.EventoDTO;
+import com.example.proyectounieventos.dto.evento.LocalidadDTO;
 import com.example.proyectounieventos.modelo.documentos.Evento;
 import com.example.proyectounieventos.repositorios.EventoRepo;
 import com.example.proyectounieventos.servicios.EventoServicios;
@@ -94,14 +95,29 @@ public class EventoController {
     // Método para mapear un Evento a un EventoDTO
     private EventoDTO mapearEventoAEventoDTO(Evento evento) {
         List<LocalidadDTO> localidades = evento.getLocalidades().stream()
-                .map(localidad -> new LocalidadDTO(localidad.getNombre(), localidad.getPrecio(), localidad.getCapacidadMax()))
+                .map(localidad -> {
+                    List<EntradaDTO> entradasDTO = localidad.getEntradas().stream()
+                            .map(entrada -> new EntradaDTO(
+                                    entrada.getId(),
+                                    entrada.getNumeroAsiento(),
+                                    entrada.isDisponible()
+                            ))
+                            .collect(Collectors.toList());
+
+                    return new LocalidadDTO(
+                            localidad.getId(),
+                            localidad.getNombre(),
+                            localidad.getPrecio(),
+                            entradasDTO  // Ahora es una lista de EntradaDTO
+                    );
+                })
                 .collect(Collectors.toList());
 
         return new EventoDTO(
                 evento.getId(),
                 evento.getNombre(),
                 evento.getDireccion(),
-                evento.getCiudad().toString() , //to string por ser un object id, no se si funciona así
+                evento.getCiudad().toString(), // Asegúrate de que esto devuelva un valor legible
                 evento.getDescripcion(),
                 evento.getTipo(),
                 evento.getImagenPortada(),
@@ -110,5 +126,6 @@ public class EventoController {
                 evento.getFecha()
         );
     }
+
 }
 

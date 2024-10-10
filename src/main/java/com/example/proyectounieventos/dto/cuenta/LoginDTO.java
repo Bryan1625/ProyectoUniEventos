@@ -1,4 +1,4 @@
-package com.example.proyectounieventos.dto;
+package com.example.proyectounieventos.dto.cuenta;
 
 public record LoginDTO(
         String correoElectronico,
