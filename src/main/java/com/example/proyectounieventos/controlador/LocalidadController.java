@@ -48,7 +48,7 @@ public class LocalidadController {
                 .map(entrada -> new EntradaDTO(entrada.getId(), entrada.getNumeroAsiento(), entrada.isDisponible())) // Asumiendo que EntradaDTO tiene estos atributos
                 .collect(Collectors.toList());
 
-        return new LocalidadDTO(localidad.getId(), localidad.getNombre(), localidad.getPrecio(), entradaDTOs);
+        return new LocalidadDTO(localidad.getId(), localidad.getNombre(), localidad.getPrecio(), entradaDTOs, localidad.getEventoId());
     }
 }
 

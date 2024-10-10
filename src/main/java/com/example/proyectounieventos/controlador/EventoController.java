@@ -108,7 +108,8 @@ public class EventoController {
                             localidad.getId(),
                             localidad.getNombre(),
                             localidad.getPrecio(),
-                            entradasDTO  // Ahora es una lista de EntradaDTO
+                            entradasDTO,
+                            localidad.getEventoId()
                     );
                 })
                 .collect(Collectors.toList());
@@ -117,7 +118,7 @@ public class EventoController {
                 evento.getId(),
                 evento.getNombre(),
                 evento.getDireccion(),
-                evento.getCiudad().toString(), // Asegúrate de que esto devuelva un valor legible
+                evento.getCiudad(),
                 evento.getDescripcion(),
                 evento.getTipo(),
                 evento.getImagenPortada(),

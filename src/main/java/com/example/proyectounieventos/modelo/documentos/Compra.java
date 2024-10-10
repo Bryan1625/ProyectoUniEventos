@@ -1,6 +1,7 @@
 package com.example.proyectounieventos.modelo.documentos;
 
 
+import com.example.proyectounieventos.modelo.enums.EstadoCompra;
 import com.example.proyectounieventos.modelo.vo.DetalleCompra;
 import com.example.proyectounieventos.modelo.vo.Identificador;
 import com.example.proyectounieventos.modelo.vo.Pago;
@@ -31,7 +32,8 @@ public class Compra {
     private float valorTotal;
     private ObjectId idCupon;
     private LocalDateTime fecha;
-    private String idCliente; //lo pide el controlador de compra para usar metodos
+    private String idCliente;
+    private EstadoCompra estado;
 
 
 

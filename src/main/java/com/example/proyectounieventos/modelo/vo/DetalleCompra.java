@@ -9,6 +9,7 @@ public class DetalleCompra {
 
     private ObjectId evento;
     private ObjectId localidad;
+    private ObjectId cliente;
     private int cantidadEntradas;
     private double valorUnitario;
     private double total;

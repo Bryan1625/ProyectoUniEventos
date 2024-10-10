@@ -13,6 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
 
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 
@@ -22,37 +23,30 @@ public class Evento {
     @Id
     private String id;
 
-    private ObjectId Ciudad;
+
 
     private String nombre;
-    private String descripcion;
     private String direccion;
 
-    private LocalDateTime fecha;
+    private ObjectId Ciudad;
+    private String descripcion;
     private TipoEvento tipo;
-
-
     private String imagenPortada;
     private String imagenLocalidades;
+
+    private LocalDateTime fecha;
+
+
+
+
+
 
     private EstadoEvento estadoEvento;
     private List<Localidad> localidades;
 
-    @Builder
 
-    public Evento(String id, ObjectId ciudad, String nombre, String descripcion,
-                  String direccion, LocalDateTime fecha, TipoEvento tipo, String imagenPortada,
-                  String imagenLocalidades, EstadoEvento estadoEvento, List<Localidad> localidades) {
-        this.id = id;
-        Ciudad = ciudad;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.direccion = direccion;
-        this.fecha = fecha;
-        this.tipo = tipo;
-        this.imagenPortada = imagenPortada;
-        this.imagenLocalidades = imagenLocalidades;
-        this.estadoEvento = estadoEvento;
-        this.localidades = localidades;
+
+    public void agregarLocalidad(Localidad nuevaLocalidad) {
+        localidades.add(nuevaLocalidad);
     }
 }

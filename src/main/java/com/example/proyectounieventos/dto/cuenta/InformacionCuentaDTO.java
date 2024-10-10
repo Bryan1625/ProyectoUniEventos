@@ -5,6 +5,5 @@ public record InformacionCuentaDTO(
         String cedula,
         String nombreCompleto,
         String direccionResidencia,
-        String numeroTelefono,
         String correoElectronico
 ) {}
