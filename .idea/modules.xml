@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ProyectoUniEventos.iml" filepath="$PROJECT_DIR$/.idea/modules/ProyectoUniEventos.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ProyectoUniEventos.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ProyectoUniEventos.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ProyectoUniEventos.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ProyectoUniEventos.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.example.ProyectoUniEventos.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.example.ProyectoUniEventos.main.iml" />
     </modules>
   </component>
 </project>

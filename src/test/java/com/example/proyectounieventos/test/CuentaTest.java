@@ -2,12 +2,10 @@ package com.example.proyectounieventos.test;
 
 
 import com.example.proyectounieventos.modelo.documentos.Cuenta;
-import com.example.proyectounieventos.modelo.enums.TipoUsuario;
-import com.example.proyectounieventos.modelo.vo.CodigoValidacion;
-import com.example.proyectounieventos.modelo.vo.Usuario;
+import com.example.proyectounieventos.modelo.enums.TipoCuenta;
+
 import com.example.proyectounieventos.repositorios.CuentaRepo;
-import com.example.proyectounieventos.modelo.*;
-import com.example.proyectounieventos.repositorios.UsuarioRepo;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,19 +29,22 @@ public class CuentaTest {
         try{
         //crear una nueva cuenta
         Cuenta cuenta = new Cuenta();
+        cuenta.setNombre("juan Torres");
         cuenta.setEmail("admin@evento.com");
-        //cuenta.setUsuario();
-        cuenta.setTipoUsuario(TipoUsuario.ADMIN);
-        //cuenta.setEstado();
-        //cuenta.setCodigoValidacion();
-        cuenta.setContrasenia("admin01");
-        cuenta.setFechaRegistro(LocalDateTime.now());
+        cuenta.setCedula("11100");
+        //cuenta.setValidacion();
+            cuenta.setFechaRegistro(LocalDateTime.now());
+            //cuenta.setUsuario();
+            //cuenta.setEstado();
+        cuenta.setTipoCuenta(TipoCuenta.ADMIN);
+
+
 
         //Guardar la cuenta en la base de datos
         Cuenta  cuentaGuardada = cuentaRepo.save(cuenta);
 
         //Verificar que la cuenta tiene un ID y fue guardado correctamente
-        Assertions.assertNotNull(cuentaGuardada.getCuentaId());
+        Assertions.assertNotNull(cuentaGuardada.getId());
         Assertions.assertEquals("admin@evento.com", cuenta.getEmail());
 
 
@@ -51,7 +52,7 @@ public class CuentaTest {
         Se espera que si se registra correctamente entonces el servicio
         no debe retornar 0
          */
-            Assertions.assertNotEquals(0, cuentaGuardada.getCuentaId());
+            Assertions.assertNotEquals(0, cuentaGuardada.getId());
 
 
         } catch (Exception e) {
