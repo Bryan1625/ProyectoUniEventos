@@ -25,13 +25,15 @@ import java.util.List;
 public class Compra {
 
     @Id
-    private String id;  // Cambiado a long para autoincremento
+    private String id;
 
     private List<DetalleCompra> detalles;
-    private float valorTotal;
+    private ObjectId idCliente;
+    private float total;
     private ObjectId idCupon;
     private LocalDateTime fecha;
-
+    private String codigoPasarela;
+    private Pago pago;
 
 
 

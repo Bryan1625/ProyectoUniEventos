@@ -1,10 +1,9 @@
 package com.example.proyectounieventos.dto;
 
-public record CrearCuentaDTO(
-        String cedula,
+public record EditarCuentaDTO(
+        String id,
         String nombreCompleto,
         String direccionResidencia,
         String numeroTelefono,
-        String correoElectronico,
-        String contrasenia
+        String correoElectronico
 ) {}

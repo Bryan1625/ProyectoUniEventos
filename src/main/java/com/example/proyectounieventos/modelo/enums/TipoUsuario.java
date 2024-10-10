@@ -1,6 +1,6 @@
 package com.example.proyectounieventos.modelo.enums;
 
-public enum TipoCuenta {
+public enum TipoUsuario {
     CLIENTE, ADMIN
 
 }
