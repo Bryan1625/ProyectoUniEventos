@@ -10,6 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
 
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 
@@ -23,6 +24,7 @@ public class Localidad {
     private double precio;
 
     private List<Entrada> entradas;
+    private String eventoId;
 
     @Builder
     public Localidad(String id, String nombre, double precio,

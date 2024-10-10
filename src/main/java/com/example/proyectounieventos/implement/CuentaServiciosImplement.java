@@ -1,6 +1,7 @@
 package com.example.proyectounieventos.implement;
 
 import com.example.proyectounieventos.dto.cuenta.*;
+import com.example.proyectounieventos.modelo.documentos.Cliente;
 import com.example.proyectounieventos.modelo.documentos.Cuenta;
 import com.example.proyectounieventos.modelo.vo.CodigoValidacion;
 import com.example.proyectounieventos.modelo.vo.EstadoCuenta;
@@ -17,7 +18,6 @@ import java.util.Date;
 import java.util.UUID;
 
 @Service
-
 public class CuentaServiciosImplement implements CuentaServicio {
 
     @Autowired
@@ -25,7 +25,6 @@ public class CuentaServiciosImplement implements CuentaServicio {
 
     @Override
     public String crearCuenta(CrearCuentaDTO cuentaDTO) throws Exception {
-        // Validaciones básicas de los datos
         if (cuentaDTO.cedula() == null || cuentaDTO.cedula().isEmpty()) {
             throw new Exception("La cédula es obligatoria.");
         }
@@ -36,90 +35,107 @@ public class CuentaServiciosImplement implements CuentaServicio {
             throw new Exception("La contraseña debe tener al menos 6 caracteres.");
         }
 
-        // Crear el objeto Usuario desde los datos proporcionados en cuentaDTO
-        // Create the Usuario object
         Usuario usuario = new Usuario();
-//
-//        usuario.setDireccion(cuentaDTO.direccionResidencia());
-//        usuario.setTelefono(cuentaDTO.numeroTelefono());
+        usuario.setUsuario(cuentaDTO.nombre());
+        usuario.setPassword(hashPassword(cuentaDTO.contrasenia()));
 
+        CodigoValidacion codigoValidacion = new CodigoValidacion();
+        codigoValidacion.setCodigo(generarCodigoValidacion());
+        codigoValidacion.setUsado(false);
 
-        // Create EstadoCuenta object
         EstadoCuenta estadoCuenta = new EstadoCuenta();
         estadoCuenta.setActivo(true);
         estadoCuenta.setCambioEstado(new Date());
 
-        // Crear un objeto Cuenta utilizando el patrón Builder
         Cuenta nuevaCuenta = Cuenta.builder()
+                .id(UUID.randomUUID().toString())
+                .nombre(cuentaDTO.nombre())
                 .email(cuentaDTO.email())
-                 // Hashear la contraseña antes de guardarla// Asumiendo que por defecto es "CLIENTE"
-                .fechaRegistro(LocalDateTime.now())  // Registrar la fecha actual
-                .usuario(usuario)  // Asociar el objeto Usuario
-                .estado(estadoCuenta)  // Asignar el estado inicial de la cuenta
-                  // Generar un código de validación
+                .cedula(cuentaDTO.cedula())
+                .validacion(codigoValidacion)
+                .fechaRegistro(LocalDateTime.now())
+                .usuario(usuario)
+                .estado(estadoCuenta)
                 .build();
 
-        // Guardar la nueva cuenta en la base de datos
         cuentaRepository.save(nuevaCuenta);
-
-        // Retornar un mensaje de éxito
         return "La cuenta ha sido creada exitosamente.";
     }
 
     @Override
     public String editarCuenta(ActualizarCuentaDTO actualizarCuentaDTO) throws Exception {
-        return "";
-    }
+        Cuenta cuenta = cuentaRepository.findByCedula(actualizarCuentaDTO.cedula())
+                .orElseThrow(() -> new Exception("Cuenta no encontrada."));
 
-    // Método auxiliar para hashear la contraseña (usando BCrypt)
-    private String hashPassword(String contrasenia) {
-        return BCrypt.hashpw(contrasenia, BCrypt.gensalt());
-    }
+        cuenta.setNombre(actualizarCuentaDTO.nombreCompleto());
+        cuenta.setEmail(actualizarCuentaDTO.correoElectronico());
+        cuenta.setCedula(actualizarCuentaDTO.cedula());
+        if(cuenta instanceof Cliente){
+            Cliente cliente = (Cliente) cuenta;
+            cliente.setDireccion(actualizarCuentaDTO.direccionResidencia());
+        }
 
-    private CodigoValidacion generarCodigoValidacion(String usuarioId) {
-        // Generar un código aleatorio (puedes personalizarlo)
-        String codigo = UUID.randomUUID().toString();
-
-        // Fecha de generación (fecha actual)
-        Date fechaGeneracion = new Date();
-
-        // Fecha de expiración (por ejemplo, 24 horas después de la generación)
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(fechaGeneracion);
-        calendar.add(Calendar.HOUR, 24);  // Código válido por 24 horas
-        Date fechaExpiracion = calendar.getTime();
-
-        // Crear una nueva instancia de CodigoValidacion
-        CodigoValidacion codigoValidacion = new CodigoValidacion();
-        codigoValidacion.setCodigo(codigo);
-        codigoValidacion.setUsado(false);
-
-        // Retornar el objeto
-        return codigoValidacion;
+        cuentaRepository.save(cuenta);
+        return "La cuenta ha sido actualizada exitosamente.";
     }
 
     @Override
     public String eliminarCuenta(String cuentaID) throws Exception {
-        return "";
+        Cuenta cuenta = cuentaRepository.findById(cuentaID)
+                .orElseThrow(() -> new Exception("Cuenta no encontrada."));
+        cuentaRepository.delete(cuenta);
+        return "La cuenta ha sido eliminada exitosamente.";
     }
 
     @Override
     public InformacionCuentaDTO obtenerInformacionCuenta(String cuentaID) throws Exception {
-        return null;
+        Cuenta cuenta = cuentaRepository.findById(cuentaID)
+                .orElseThrow(() -> new Exception("Cuenta no encontrada."));
+        String direccion="";
+        if(cuenta instanceof Cliente){
+            Cliente cliente = (Cliente) cuenta;
+            direccion = cliente.getDireccion();
+        }
+        return new InformacionCuentaDTO(cuenta.getId(), cuenta.getCedula(), cuenta.getNombre(), direccion, cuenta.getEmail());
     }
 
     @Override
     public String enviarCodigoRecuperacionPassword(String correo) throws Exception {
-        return "";
+        Cuenta cuenta = cuentaRepository.findByEmail(correo)
+                .orElseThrow(() -> new Exception("Cuenta no encontrada."));
+
+        CodigoValidacion codigoValidacion = cuenta.getValidacion();
+        // Lógica para enviar el código por correo. Aquí puedes implementar la lógica de envío de correos.
+        return "El código de recuperación ha sido enviado al correo.";
     }
 
     @Override
     public String cambiarPassword(CambiarPasswordDTO cambiarPasswordDTO) throws Exception {
-        return "";
+        Cuenta cuenta = cuentaRepository.findByEmail(cambiarPasswordDTO.correoElectronico())
+                .orElseThrow(() -> new Exception("Cuenta no encontrada."));
+
+        cuenta.getUsuario().setPassword(hashPassword(cambiarPasswordDTO.nuevaContrasenia()));
+        cuentaRepository.save(cuenta);
+        return "La contraseña ha sido cambiada exitosamente.";
     }
 
     @Override
     public String iniciarSesion(LoginDTO loginDTO) throws Exception {
-        return "";
+        Cuenta cuenta = cuentaRepository.findByEmail(loginDTO.correoElectronico())
+                .orElseThrow(() -> new Exception("Credenciales inválidas."));
+
+        if (!BCrypt.checkpw(loginDTO.contrasenia(), cuenta.getUsuario().getPassword())) {
+            throw new Exception("Credenciales inválidas.");
+        }
+
+        return "Inicio de sesión exitoso.";
+    }
+
+    private String hashPassword(String password) {
+        return BCrypt.hashpw(password, BCrypt.gensalt());
+    }
+
+    private String generarCodigoValidacion() {
+        return UUID.randomUUID().toString();
     }
 }

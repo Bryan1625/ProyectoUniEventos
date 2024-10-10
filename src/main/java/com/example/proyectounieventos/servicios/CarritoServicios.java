@@ -2,6 +2,8 @@ package com.example.proyectounieventos.servicios;
 
 import com.example.proyectounieventos.modelo.vo.DetalleCompra;
 
+import java.util.List;
+
 public interface CarritoServicios {
 
 
@@ -11,7 +13,7 @@ public interface CarritoServicios {
 
     void vaciarCarrito () throws Exception;
 
-    void verItems () throws Exception;
+    List<DetalleCompra> verItems () throws Exception;
 
 
 
