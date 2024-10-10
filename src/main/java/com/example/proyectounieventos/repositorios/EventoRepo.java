@@ -15,6 +15,7 @@ public interface EventoRepo extends MongoRepository<Evento, String> {
     @Query("{ 'nombre': { $regex: ?0, $options: 'i' } }")
     List<Evento> findByNombreContainingIgnoreCase(String nombre);
 
+    List<Evento> findByNombreContaining(String filtro);
 
 
     //Listar

@@ -1,4 +1,5 @@
 package com.example.proyectounieventos.modelo.vo;
+import com.example.proyectounieventos.modelo.enums.EstadoCupon;
 import com.example.proyectounieventos.modelo.enums.TipoCupon;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -18,6 +19,8 @@ public class Cupon {
     private Date fechaVencimiento;
 
     private TipoCupon tipo;
+
+    private EstadoCupon estadoCupon;
 
 
 }
