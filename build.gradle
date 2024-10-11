@@ -35,6 +35,8 @@ dependencies {
     implementation 'com.sun.mail:jakarta.mail:2.0.1' // Cambia esta línea si prefieres otra implementación
     implementation 'jakarta.activation:jakarta.activation-api:2.0.0' // Asegúrate de que esta versión sea la correcta
 
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'
