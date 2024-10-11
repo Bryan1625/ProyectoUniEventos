@@ -1,5 +1,6 @@
-package com.example.proyectounieventos.implement;
+package com.example.proyectounieventos.servicios.impl;
 
+import com.example.proyectounieventos.dto.evento.EventoDTO;
 import com.example.proyectounieventos.modelo.documentos.Evento;
 import com.example.proyectounieventos.modelo.documentos.Reporte;
 import com.example.proyectounieventos.modelo.vo.Cupon;
@@ -100,5 +101,19 @@ public class AdminServiciosImplement implements AdminServicios {
         // reporte.setTotalVentas(totalVentas);
 
         return reporte;
+    }
+
+    @Override
+    public Reporte generarReporte(EventoDTO eventoDTO) throws Exception {
+        return null;
+    }
+
+    @Override
+    public void generarPDF() throws Exception{}
+        //METODO PARA GENERAR EL PDF DEL REPORTE
+
+    @Override
+    public void mostrarEnWeb() throws Exception {
+
     }
 }

@@ -25,4 +25,5 @@ public interface ClienteServicios {
 
     List<Compra>historialCompras(ObjectId idUsuario) throws Exception;
 
+    List<Compra> listarCompras(String idUsuario) throws Exception;
 }

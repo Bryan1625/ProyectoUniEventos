@@ -1,16 +1,17 @@
-package com.example.proyectounieventos.implement;
+package com.example.proyectounieventos.servicios.impl;
 
+import com.example.proyectounieventos.modelo.documentos.Usuario;
 import com.example.proyectounieventos.modelo.enums.EstadoCompra;
 import com.example.proyectounieventos.modelo.documentos.Compra;
 import com.example.proyectounieventos.modelo.documentos.Evento;
 import com.example.proyectounieventos.modelo.vo.DetalleCompra;
 import com.example.proyectounieventos.modelo.documentos.Cliente;
-import com.example.proyectounieventos.modelo.vo.Usuario;
 import com.example.proyectounieventos.repositorios.CompraRepo;
 import com.example.proyectounieventos.repositorios.EventoRepo;
 import com.example.proyectounieventos.repositorios.ClienteRepo;
 import com.example.proyectounieventos.repositorios.UsuarioRepo;
 import com.example.proyectounieventos.servicios.ClienteServicios;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -84,6 +85,21 @@ public class ClienteServiciosImplement implements ClienteServicios {
     }
 
     @Override
+    public List<Compra> listarCompras() throws Exception {
+        return List.of();
+    }
+
+    @Override
+    public boolean cancelarCompras() throws Exception {
+        return false;
+    }
+
+    @Override
+    public List<Compra> historialCompras(ObjectId idUsuario) throws Exception {
+        return List.of();
+    }
+
+    @Override
     public List<Compra> listarCompras(String idUsuario) throws Exception {
         if (idUsuario == null || idUsuario.isEmpty()) {
             throw new Exception("ID de usuario no puede ser nulo o vacío.");
@@ -92,7 +108,7 @@ public class ClienteServiciosImplement implements ClienteServicios {
         Usuario usuario = usuarioRepository.findById(idUsuario)
                 .orElseThrow(() -> new Exception("Usuario no encontrado."));
 
-
+        //
         return compraRepository.findByIdCliente(usuario.getCuenta().getId());
     }
 }

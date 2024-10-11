@@ -8,6 +8,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
@@ -26,7 +27,9 @@ public class Carrito {
     //Relacion con el Usuario
     private ObjectId idUsuario;
 
-    private List<Compra> items;
+
+    //TOCA INICIALIZARLO PARA LAS PRUEBAS
+    private List<Compra> items = new ArrayList<>();
 
     @Builder
     public Carrito(String id, ObjectId idUsuario, List<Compra> items) {

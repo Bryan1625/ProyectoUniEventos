@@ -7,3 +7,6 @@ public record InformacionCuentaDTO(
         String direccionResidencia,
         String correoElectronico
 ) {}
+
+
+

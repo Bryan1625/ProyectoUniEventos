@@ -3,7 +3,6 @@ package com.example.proyectounieventos.modelo.documentos;
 import com.example.proyectounieventos.modelo.enums.TipoCuenta;
 import com.example.proyectounieventos.modelo.vo.CodigoValidacion;
 import com.example.proyectounieventos.modelo.vo.EstadoCuenta;
-import com.example.proyectounieventos.modelo.vo.Usuario;
 import lombok.Getter;
 import lombok.Setter;
 

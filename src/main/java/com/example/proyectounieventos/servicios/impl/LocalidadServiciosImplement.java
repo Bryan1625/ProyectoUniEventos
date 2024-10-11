@@ -1,4 +1,4 @@
-package com.example.proyectounieventos.implement;
+package com.example.proyectounieventos.servicios.impl;
 
 import com.example.proyectounieventos.dto.evento.EntradaDTO;
 import com.example.proyectounieventos.dto.evento.LocalidadDTO;

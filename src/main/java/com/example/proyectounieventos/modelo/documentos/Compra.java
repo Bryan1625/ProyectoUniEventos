@@ -35,6 +35,10 @@ public class Compra {
     private String idCliente;
     private EstadoCompra estado;
 
+    public Compra(List<DetalleCompra> detalles) {
+        this.detalles = detalles;
+    }
+
 
 
 }
