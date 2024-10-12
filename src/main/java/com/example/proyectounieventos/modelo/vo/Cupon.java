@@ -10,7 +10,7 @@ import java.util.Date;
 @Document(collection = "cupon")
 public class Cupon {
     @Id
-    private String id;
+    private String idCupon;
     private String codigo;
     private String nombre;
     private double porcentajeDescuento;
