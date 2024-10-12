@@ -29,6 +29,8 @@ public class LoginServiciosImpl implements LoginServicio {
     public TokenDTO login(LoginDTO loginDTO) {
         Optional<Cuenta> cuentaOpt = loginRepo.findByEmail(loginDTO.getEmail());
 
+
+
         if (cuentaOpt.isPresent()) {
             Cuenta cuenta = cuentaOpt.get();
 
