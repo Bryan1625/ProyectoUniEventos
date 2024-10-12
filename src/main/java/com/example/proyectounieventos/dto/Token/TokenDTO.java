@@ -1,4 +1,4 @@
-package com.example.proyectounieventos.dto;
+package com.example.proyectounieventos.dto.Token;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
