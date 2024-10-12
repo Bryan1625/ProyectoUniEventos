@@ -5,7 +5,7 @@ import com.example.proyectounieventos.modelo.documentos.Compra;
 import com.example.proyectounieventos.modelo.documentos.Evento;
 import com.example.proyectounieventos.modelo.vo.DetalleCompra;
 import com.example.proyectounieventos.modelo.documentos.Cliente;
-import com.example.proyectounieventos.modelo.vo.Usuario;
+import com.example.proyectounieventos.modelo.documentos.Usuario;
 import com.example.proyectounieventos.repositorios.CompraRepo;
 import com.example.proyectounieventos.repositorios.EventoRepo;
 import com.example.proyectounieventos.repositorios.ClienteRepo;

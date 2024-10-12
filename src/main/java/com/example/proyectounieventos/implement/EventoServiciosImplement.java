@@ -11,11 +11,13 @@ import com.example.proyectounieventos.repositorios.EventoRepo; // Asegúrate de 
 import com.example.proyectounieventos.repositorios.LocalidadRepo; // Asegúrate de tener el repositorio correspondiente
 import com.example.proyectounieventos.servicios.EventoServicios;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Primary
 @Service
 public class EventoServiciosImplement implements EventoServicios {
 
