@@ -1,10 +1,9 @@
 package com.example.proyectounieventos.implement;
 
-import com.example.proyectounieventos.dto.TokenDTO;
+import com.example.proyectounieventos.dto.Token.TokenDTO;
 import com.example.proyectounieventos.dto.cuenta.LoginDTO;
 import com.example.proyectounieventos.modelo.documentos.Cuenta;
 
-import com.example.proyectounieventos.modelo.documentos.Usuario;
 import com.example.proyectounieventos.repositorios.*;
 
 import com.example.proyectounieventos.servicios.LoginServicio;
