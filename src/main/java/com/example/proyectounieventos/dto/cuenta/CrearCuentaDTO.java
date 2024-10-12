@@ -2,7 +2,7 @@ package com.example.proyectounieventos.dto.cuenta;
 
 
 import com.example.proyectounieventos.modelo.vo.CodigoValidacion;
-import com.example.proyectounieventos.modelo.vo.Usuario;
+import com.example.proyectounieventos.modelo.documentos.Usuario;
 import java.time.LocalDateTime;
 
 public record CrearCuentaDTO(

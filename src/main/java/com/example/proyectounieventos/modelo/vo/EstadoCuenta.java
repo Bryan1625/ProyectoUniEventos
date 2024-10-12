@@ -5,12 +5,12 @@ import lombok.Data;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Data
 public class EstadoCuenta {
-    //private String usuarioId;
-    //private double saldo;
-    //private List<DetalleCompra> comprasRealizadas;
-    //private List<Cupon> cuponesDisponibles;
+
 
     private boolean activo;
 

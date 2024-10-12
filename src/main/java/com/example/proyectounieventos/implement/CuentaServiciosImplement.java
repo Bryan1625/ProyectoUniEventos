@@ -1,19 +1,21 @@
 package com.example.proyectounieventos.implement;
 
+
 import com.example.proyectounieventos.dto.cuenta.*;
+import com.example.proyectounieventos.dto.usuario.CambiarPasswordDTO;
 import com.example.proyectounieventos.modelo.documentos.Cliente;
 import com.example.proyectounieventos.modelo.documentos.Cuenta;
+import com.example.proyectounieventos.modelo.documentos.Usuario;
 import com.example.proyectounieventos.modelo.vo.CodigoValidacion;
 import com.example.proyectounieventos.modelo.vo.EstadoCuenta;
-import com.example.proyectounieventos.modelo.vo.Usuario;
 import com.example.proyectounieventos.repositorios.CuentaRepo;
 import com.example.proyectounieventos.servicios.CuentaServicio;
+import com.example.proyectounieventos.utils.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-
 import java.util.Date;
 import java.util.UUID;
 
@@ -37,7 +39,7 @@ public class CuentaServiciosImplement implements CuentaServicio {
 
         Usuario usuario = new Usuario();
         usuario.setUsuario(cuentaDTO.nombre());
-       // usuario.setPassword(hashPassword(cuentaDTO.contrasenia()));
+        usuario.setPassword(hashPassword(cuentaDTO.contrasenia()));
 
         CodigoValidacion codigoValidacion = new CodigoValidacion();
         codigoValidacion.setCodigo(generarCodigoValidacion());
@@ -113,29 +115,50 @@ public class CuentaServiciosImplement implements CuentaServicio {
     public String cambiarPassword(CambiarPasswordDTO cambiarPasswordDTO) throws Exception {
         Cuenta cuenta = cuentaRepository.findByEmail(cambiarPasswordDTO.correoElectronico())
                 .orElseThrow(() -> new Exception("Cuenta no encontrada."));
-/*
-        cuenta.getUsuario().setPassword(hashPassword(cambiarPasswordDTO.nuevaContrasenia()));*/
+
+        cuenta.getUsuario().setPassword(hashPassword(cambiarPasswordDTO.nuevaContrasenia()));
         cuentaRepository.save(cuenta);
         return "La contraseña ha sido cambiada exitosamente.";
     }
 
     @Override
+    public void enviarCodigo(String correo) throws Exception {
+
+        // Crear el código de validación
+        CodigoValidacion codigoValidacion = new CodigoValidacion();
+        codigoValidacion.setCodigo(generarCodigoValidacion());
+        codigoValidacion.setUsado(false);
+
+        // Enviar el correo con el código
+        String asunto = "Código de Validación";
+        String mensaje = "Tu código de validación es: " + codigoValidacion.getCodigo();
+
+        // Implementar el servicio de envío de correos
+        EmailService emailService = new EmailService(); // Asegúrate de inyectar EmailService si es necesario
+        emailService.enviarCorreo(correo, asunto, mensaje);
+
+        System.out.println("Código de validación enviado correctamente al correo: " + correo);
+    }
+
+
+    @Override
     public String iniciarSesion(LoginDTO loginDTO) throws Exception {
-        Cuenta cuenta = cuentaRepository.findByEmail(loginDTO.correoElectronico())
+        Cuenta cuenta = cuentaRepository.findByEmail(loginDTO.email())
                 .orElseThrow(() -> new Exception("Credenciales inválidas."));
-/*
-        if (!BCrypt.checkpw(loginDTO.contrasenia(), cuenta.getUsuario().getPassword())) {
+
+        if (!BCrypt.checkpw(loginDTO.password(), cuenta.getUsuario().getPassword())) {
             throw new Exception("Credenciales inválidas.");
-        }*/
+        }
 
         return "Inicio de sesión exitoso.";
     }
-/*
+
     private String hashPassword(String password) {
         return BCrypt.hashpw(password, BCrypt.gensalt());
-    }*/
+    }
 
     private String generarCodigoValidacion() {
         return UUID.randomUUID().toString();
     }
+
 }
